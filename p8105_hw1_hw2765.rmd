@@ -25,4 +25,62 @@ prob1_df =
 )
 
 ```
+
+Take mean of each variable
+
+```{r}
+mean(pull(prob1_df,samp))
+mean(pull(prob1_df,samp_gt_0))
+mean(pull(prob1_df,char_vec))
+mean(pull(prob1_df,factor_vec))
+```
+I can take mean of numbers and logical but not char or factor
+
+```{r}
+as.numeric(pull(prob1_df,samp))
+as.numeric(pull(prob1_df,samp_gt_0))
+as.numeric(pull(prob1_df,char_vec))
+as.numeric(pull(prob1_df,factor_vec))
+```
+
+```{r}
+as.numeric(pull(prob1_df,samp_gt_0)) * pull(prob1_df,samp)
+as.factor(pull(prob1_df,samp_gt_0)) * pull(prob1_df,samp)
+as.numeric(as.factor(pull(prob1_df,samp_gt_0))) * pull(prob1_df,samp)
+```
+
+
+
 ##Problem 2
+
+Description of dataset
+
+The dataset penguins includes the species, island, bill_length_mm, bill_depth_mm
+flipper_length_mm, body_mass_g, sex, year.
+
+Some important value:
+The largest flipper length is 231 mm
+The max body mass is 6300g and the min body mass is 2700g
+
+The dataset consists 344 rows and 8 columns
+
+The mean flipper length is 200.967 mm
+```{r}
+data("penguins", package = "palmerpenguins")
+print(penguins)
+c(nrow(penguins),ncol(penguins))
+penguins_drop = drop_na(penguins)
+mean(pull(penguins_drop,flipper_length_mm))
+max(pull(penguins_drop,flipper_length_mm))
+max(pull(penguins_drop,body_mass_g))
+min(pull(penguins_drop,body_mass_g))
+```
+
+Make Scatterplot
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+ggsave("hw1_scatter.pdf", height = 4, width = 4)
+```
+
+
