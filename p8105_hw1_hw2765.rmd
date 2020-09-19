@@ -61,6 +61,8 @@ flipper_length_mm, body_mass_g, sex, year.
 Some important value:
 The largest flipper length is 231 mm
 The max body mass is 6300g and the min body mass is 2700g
+52 peguins from Torgersen island
+Adelie species is the largest specie with 152 penguins
 
 The dataset consists 344 rows and 8 columns
 
@@ -69,11 +71,7 @@ The mean flipper length is 200.967 mm
 data("penguins", package = "palmerpenguins")
 print(penguins)
 c(nrow(penguins),ncol(penguins))
-penguins_drop = drop_na(penguins)
-mean(pull(penguins_drop,flipper_length_mm))
-max(pull(penguins_drop,flipper_length_mm))
-max(pull(penguins_drop,body_mass_g))
-min(pull(penguins_drop,body_mass_g))
+summary(penguins)
 ```
 
 Make Scatterplot
